@@ -3,6 +3,7 @@ var cors = require('cors')
 const app = express()
 const port = 3000
 
+app.use(express.static('kepek'))
 app.use(cors())
 app.use(express.json())
 
