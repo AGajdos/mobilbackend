@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/izomcsoport', (req, res) => {
+/*app.get('/izomcsoport', (req, res) => {
     var mysql = require('mysql')
     var connection = mysql.createConnection({
       host: 'localhost',
@@ -33,7 +33,7 @@ app.get('/izomcsoport', (req, res) => {
     
     connection.end()    
 
-  })
+  })*/
   app.get('/gyakorlatok', (req, res) => {
     var mysql = require('mysql')
     var connection = mysql.createConnection({
