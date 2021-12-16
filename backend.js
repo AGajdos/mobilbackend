@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-/*app.get('/izomcsoport', (req, res) => {
+app.get('/izomcsoport', (req, res) => {
     var mysql = require('mysql')
     var connection = mysql.createConnection({
       host: 'localhost',
@@ -33,7 +33,8 @@ app.get('/', (req, res) => {
     
     connection.end()    
 
-  })*/
+  })
+  
   app.get('/gyakorlatok', (req, res) => {
     var mysql = require('mysql')
     var connection = mysql.createConnection({
@@ -45,7 +46,7 @@ app.get('/', (req, res) => {
     
     connection.connect()
     
-    connection.query('SELECT * from gyakorlatok', function (err, rows, fields) {
+    connection.query('SELECT * from gyakorlatok ', function (err, rows, fields) {
       if (err) throw err
     
       console.log(rows)
@@ -58,6 +59,53 @@ app.get('/', (req, res) => {
 
   })
  
+  app.get('/gyakorlatok_mell', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=1', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
+
+  app.get('/gyakorlatok_hat', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=2', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
 
 
 app.listen(port, () => {
