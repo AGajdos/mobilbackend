@@ -107,7 +107,53 @@ app.get('/izomcsoport', (req, res) => {
 
   })
 
+  app.get('/gyakorlatok_vall', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=3', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
 
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
+
+  app.get('/gyakorlatok_tricepsz', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=5', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
