@@ -154,6 +154,30 @@ app.get('/izomcsoport', (req, res) => {
     connection.end()    
 
   })
+
+  app.get('/kereses', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok  ', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
