@@ -155,7 +155,7 @@ app.get('/izomcsoport', (req, res) => {
 
   })
 
-  app.get('/kereses', (req, res) => {
+  app.post('/kereses', (req, res) => {
     var mysql = require('mysql')
     var connection = mysql.createConnection({
       host: 'localhost',
@@ -166,7 +166,7 @@ app.get('/izomcsoport', (req, res) => {
     
     connection.connect()
     
-    connection.query('SELECT * from gyakorlatok  ', function (err, rows, fields) {
+    connection.query('SELECT * from gyakorlatok Where gyakorlatok_id=1 ', function (err, rows, fields) {
       if (err) throw err
     
       console.log(rows)
