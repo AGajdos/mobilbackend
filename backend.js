@@ -155,7 +155,7 @@ app.get('/izomcsoport', (req, res) => {
 
   })
 
-  app.get('/kereses', (req, res) => {
+  app.post('/kereses', (req, res) => {
     var mysql = require('mysql')
     var connection = mysql.createConnection({
       host: 'localhost',
@@ -165,9 +165,9 @@ app.get('/izomcsoport', (req, res) => {
     })
     
     connection.connect()
-    var feltetel2='gyakorlat_nev LIKE "%fekvő%"';
-    var feltetel1='gyakorlat_leiras LIKE "%fekvő%"';
-    connection.query('SELECT gyakorlat_nev,gyakorlat_leiras FROM gyakorlatok WHERE '+feltetel1+' OR '+feltetel2, function (err, rows, fields) {
+    var feltetel2='gyakorlat_nev LIKE "%'+req.body.bevitel1+'%"';
+    //var feltetel1='gyakorlat_leiras LIKE "%'+req.body.bevitel1+'%"';
+    connection.query('SELECT gyakorlat_nev,gyakorlat_leiras,gyakorlat_kep FROM gyakorlatok WHERE '+feltetel2, function (err, rows, fields) {
       if (err) throw err
     
       console.log(rows)
