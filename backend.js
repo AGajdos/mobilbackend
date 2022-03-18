@@ -154,6 +154,75 @@ app.get('/izomcsoport', (req, res) => {
     connection.end()    
 
   })
+  app.get('/gyakorlatok_bicepsz', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=4', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
+  app.get('/gyakorlatok_comb', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=6', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
+  app.get('/gyakorlatok_vadli', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from gyakorlatok WHERE izom_gyakorlat_id=7', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+
+  })
 
   app.post('/kereses', (req, res) => {
     var mysql = require('mysql')
@@ -178,6 +247,29 @@ app.get('/izomcsoport', (req, res) => {
     
     connection.end()    
 
+  })
+  app.get('/video', (req, res) => {
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'zarodolgozat'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from video ', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+  
+      res.send(rows)
+    })
+    
+    
+    connection.end()    
+  
   })
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
